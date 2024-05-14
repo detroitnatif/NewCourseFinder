@@ -14,7 +14,6 @@ type MessageProps = {
   text: string;
 };
 
-const [showSuggestionButtons, setShowSuggestionButtons] = useState(true);
 const UserMessage = ({ text }: { text: string }) => {
   return <div className={styles.userMessage}>{text}</div>;
 };
@@ -66,6 +65,7 @@ const Chat = ({
   const [messages, setMessages] = useState([]);
   const [inputDisabled, setInputDisabled] = useState(false);
   const [threadId, setThreadId] = useState("");
+  const [showSuggestionButtons, setShowSuggestionButtons] = useState(true);
 
   // automatically scroll to bottom of chat
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -131,6 +131,11 @@ const Chat = ({
     setUserInput("");
     setInputDisabled(true);
     scrollToBottom();
+  };
+
+  const handleSubmitSuggestion = (fullText) => {
+    setUserInput(fullText);
+    setShowSuggestionButtons(false);
   };
 
   /* Stream Event Handlers */
@@ -252,13 +257,14 @@ const Chat = ({
 
   return (
     <div className={styles.chatContainer}>
-      <SuggestionButtons />
+
       <div className={styles.messages}>
         {messages.map((msg, index) => (
           <Message key={index} role={msg.role} text={msg.text} />
         ))}
         <div ref={messagesEndRef} />
       </div>
+      {showSuggestionButtons && <SuggestionButtons onSubmitSuggestion={handleSubmitSuggestion} />}
       <form
         onSubmit={handleSubmit}
         className={`${styles.inputForm} ${styles.clearfix}`}
@@ -283,3 +289,4 @@ const Chat = ({
 };
 
 export default Chat;
+
