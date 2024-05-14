@@ -257,14 +257,17 @@ const Chat = ({
 
   return (
     <div className={styles.chatContainer}>
-
       <div className={styles.messages}>
         {messages.map((msg, index) => (
           <Message key={index} role={msg.role} text={msg.text} />
         ))}
         <div ref={messagesEndRef} />
       </div>
-      {showSuggestionButtons && <SuggestionButtons onSubmitSuggestion={handleSubmitSuggestion} />}
+      {showSuggestionButtons && (
+        <div className={styles.suggestionsContainer}>
+          <SuggestionButtons onSubmitSuggestion={handleSubmitSuggestion} />
+        </div>
+      )}
       <form
         onSubmit={handleSubmit}
         className={`${styles.inputForm} ${styles.clearfix}`}
@@ -289,4 +292,3 @@ const Chat = ({
 };
 
 export default Chat;
-

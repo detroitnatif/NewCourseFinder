@@ -1,6 +1,6 @@
-// Suggestions.tsx
 
 import React from 'react';
+import styles from './suggestions.module.css';
 
 interface SuggestionButtonProps {
   primaryText: string;
@@ -12,21 +12,22 @@ const SuggestionButton: React.FC<SuggestionButtonProps> = ({ primaryText, second
   const fullText = `${primaryText} ${secondaryText}`;
 
   return (
-    <div className="suggestion-button">
+    <div className={styles.suggestionButton}>
       <button
         onClick={() => onSubmitSuggestion(fullText)}
         className="btn relative btn-neutral group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left hover:bg-slate-50 text-gray-700 dark:text-gray-300 md:whitespace-normal border-2 border-gray-200 dark:border-gray-300"
       >
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
-            <div className="text-sm font-medium text-gray-500 dark:text-gray-500">{primaryText}</div>
-            <div className="text-sm text-gray-900 dark:text-gray-300">{secondaryText}</div>
+            <div className={styles.primaryText}>{primaryText}</div>
+            <div className={styles.secondaryText}>{secondaryText}</div>
           </div>
         </div>
       </button>
     </div>
   );
 };
+
 
 interface SuggestionButtonsProps {
   onSubmitSuggestion: (fullText: string) => void;
@@ -53,7 +54,7 @@ const SuggestionButtons: React.FC<SuggestionButtonsProps> = ({ onSubmitSuggestio
   ];
 
   return (
-    <div className="suggestions-grid">
+    <div className={styles.suggestionsGrid}>
       {suggestions.map((suggestion, index) => (
         <SuggestionButton
           key={index}

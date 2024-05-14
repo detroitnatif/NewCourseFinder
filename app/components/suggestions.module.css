@@ -1,0 +1,26 @@
+/* suggestions.module.css */
+
+.suggestionsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px; /* Adjust the gap between grid items as needed */
+  }
+  
+.suggestionButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure all buttons have the same height */
+
+  }
+
+.primaryText {
+    font-weight: bold;
+    color: #3c3f42; /* Change this to your desired color */
+  }
+
+.secondaryText {
+    font-weight: thin;
+    color: #9a9fa3; /* Change this to your desired color */
+
+}
