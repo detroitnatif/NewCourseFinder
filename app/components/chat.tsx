@@ -73,7 +73,7 @@ const Chat = ({
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   useEffect(() => {
-    scrollToBottom();
+    // scrollToBottom();
   }, [messages]);
 
   // create a new threadID when chat component created
@@ -130,7 +130,7 @@ const Chat = ({
     ]);
     setUserInput("");
     setInputDisabled(true);
-    scrollToBottom();
+    // scrollToBottom();
   };
 
   const handleSubmitSuggestion = (fullText) => {
