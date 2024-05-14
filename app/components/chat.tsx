@@ -118,6 +118,7 @@ const Chat = ({
     );
     const stream = AssistantStream.fromReadableStream(response.body);
     handleReadableStream(stream);
+    setShowSuggestionButtons(false);
   };
 
   const handleSubmit = (e) => {
